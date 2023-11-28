@@ -1,0 +1,73 @@
+{
+  "hosting": {
+    "public": "build",
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|svg|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=86400"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/bizApi/getAllGoods",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/getProductList",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/sendCoupon",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/getBrandList",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/getProductDetail",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/coupons",
+        "function": "bizApi"
+      },
+      {
+        "source": "/bizApi/cancel",
+        "function": "bizApi"
+      },
+      {
+        "source": "/downloadImageProxy",
+        "function": "bizApi"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "codebase": "default",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+[debug] [2023-08-04T05:53:03.292Z] ----------------------------------------------------------------------
+[debug] [2023-08-04T05:53:03.295Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\KRTM\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-08-04T05:53:03.295Z] CLI Version:   12.4.7
+[debug] [2023-08-04T05:53:03.295Z] Platform:      win32
+[debug] [2023-08-04T05:53:03.296Z] Node Version:  v20.1.0
+[debug] [2023-08-04T05:53:03.296Z] Time:          Fri Aug 04 2023 14:53:03 GMT+0900 (대한민국 표준시)
+[debug] [2023-08-04T05:53:03.296Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-04T05:53:03.349Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-04T05:53:03.349Z] > authorizing via signed-in user (koreatm50@gmail.com)
+[debug] [2023-08-04T05:53:03.349Z] [iam] checking project koti-survey for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-08-04T05:53:03.351Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/koti-survey:testIamPermissions [none]
+[debug] [2023-08-04T05:53:03.351Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/koti-survey:testIamPermissions x-goog-quota-user=projects/koti-survey
+[debug] [2023-08-04T05:53:03.351Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/koti-survey:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-08-04T05:53:03.775Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/koti-survey:testIamPermissions 200
+[debug] [2023-08-04T05:53:03.775Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/koti-survey:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-08-04T05:53:03.776Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/koti-survey/serviceAccounts/koti-survey@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-08-04T05:53:03.776Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/koti-survey/serviceAccounts/koti-survey@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-08-04T05:53:04.289Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/koti-survey/serviceAccounts/koti-survey@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-08-04T05:53:04.290Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/koti-survey/serviceAccounts/koti-survey@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-08-04T05:53:04.290Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey [none]
+[debug] [2023-08-04T05:53:04.703Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey 200
+[debug] [2023-08-04T05:53:04.703Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey {"projectId":"koti-survey","projectNumber":"304040793796","displayName":"KoreaTM","name":"projects/koti-survey","resources":{"hostingSite":"koti-survey","storageBucket":"koti-survey.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_afd36d08-0dc6-49c0-bdda-d5a52442e6ef"}
+[info] 
+[info] === Deploying to 'koti-survey'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2023-08-04T05:53:04.707Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey [none]
+[debug] [2023-08-04T05:53:04.989Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey 200
+[debug] [2023-08-04T05:53:04.989Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey {"projectId":"koti-survey","projectNumber":"304040793796","displayName":"KoreaTM","name":"projects/koti-survey","resources":{"hostingSite":"koti-survey","storageBucket":"koti-survey.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_afd36d08-0dc6-49c0-bdda-d5a52442e6ef"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-08-04T05:53:04.991Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-08-04T05:53:04.991Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/koti-survey
+[debug] [2023-08-04T05:53:04.993Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-08-04T05:53:04.993Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/koti-survey
+[debug] [2023-08-04T05:53:04.994Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudbuild.googleapis.com [none]
+[debug] [2023-08-04T05:53:04.994Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudbuild.googleapis.com x-goog-quota-user=projects/koti-survey
+[debug] [2023-08-04T05:53:04.995Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/artifactregistry.googleapis.com [none]
+[debug] [2023-08-04T05:53:04.995Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/artifactregistry.googleapis.com x-goog-quota-user=projects/koti-survey
+[debug] [2023-08-04T05:53:06.367Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/artifactregistry.googleapis.com 200
+[debug] [2023-08-04T05:53:06.367Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-08-04T05:53:06.370Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/runtimeconfig.googleapis.com 200
+[debug] [2023-08-04T05:53:06.370Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-08-04T05:53:06.374Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudbuild.googleapis.com 200
+[debug] [2023-08-04T05:53:06.374Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-08-04T05:53:06.382Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudfunctions.googleapis.com 200
+[debug] [2023-08-04T05:53:06.382Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/koti-survey/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-08-04T05:53:06.382Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/koti-survey/adminSdkConfig [none]

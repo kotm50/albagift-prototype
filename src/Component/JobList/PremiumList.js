@@ -1,0 +1,159 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import ListAside from "./ListAside";
+
+import {
+  collection,
+  getDocs,
+  where,
+  orderBy,
+  query,
+  limit,
+  startAfter,
+} from "firebase/firestore";
+import { db } from "../../firebase";
+
+import ImgReload from "../ImgReload";
+
+function PremiumList() {
+  const [surveys, setSurveys] = useState([]);
+  const [last, setLast] = useState(null);
+  const [full, setFull] = useState(false);
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    getList(1);
+    // eslint-disable-next-line
+  }, []);
+
+  const getList = async e => {
+    const querySnapshot = await getDocs(
+      query(
+        collection(db, "jobs"),
+        where("premium", "==", true),
+        orderBy("created", "desc"),
+        limit(8)
+      )
+    );
+    let list = [];
+    querySnapshot.forEach(doc => {
+      list.push({ id: doc.id, info: doc.data() });
+    });
+    let lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+    setLast(lastVisible);
+    setSurveys(list);
+    setCounter(8);
+  };
+
+  const getMoreList = async e => {
+    const moreSnapshot = await getDocs(
+      query(
+        collection(db, "jobs"),
+        where("premium", "==", true),
+        orderBy("created", "desc"),
+        startAfter(last),
+        limit(4)
+      )
+    );
+    let list = surveys;
+    moreSnapshot.forEach(doc => {
+      list.push({ id: doc.id, info: doc.data() });
+    });
+    let lastVisible;
+    if (moreSnapshot.docs.length === 0) {
+      lastVisible = -1;
+      setFull(true);
+      return alert("모든 리스트를 불러왔습니다");
+    } else {
+      lastVisible = moreSnapshot.docs[moreSnapshot.docs.length - 1];
+      setFull(false);
+    }
+    setSurveys(list);
+    setLast(lastVisible);
+    setCounter(counter + 4);
+  };
+  return (
+    <>
+      <div className="w-11/12 lg:container mx-auto border-b py-2 lg:flex lg:gap-2">
+        <div className="hidden basis-1/12 lg:block sticky">
+          <ListAside />
+        </div>
+        <div className="py-2 lg:basis-11/12">
+          <h2 className="border-b border-indigo-500 text-2xl font-medium pb-1 mb-3">
+            프리미엄 공고
+          </h2>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+            {surveys.length > 0 ? (
+              <>
+                {surveys.map((sur, idx) => (
+                  <div
+                    className="w-full p-5 border min-h-56 hover:bg-indigo-100 bg-white"
+                    key={idx}
+                  >
+                    <Link to={`/jobdetail/${sur.id}`}>
+                      <div
+                        id="premiumCLogo"
+                        className="mx-auto border flex flex-col justify-center"
+                      >
+                        <ImgReload
+                          image={sur.info.cLogo}
+                          cName={sur.info.cName}
+                          text={"로고"}
+                        />
+                      </div>
+                      <div className="my-2 truncate">
+                        {sur.info.keywords.map((keyw, idx) => (
+                          <span
+                            className="inline-block p-2 border border-gray-200 bg-gray-50 hover:border-indigo-700 hover:bg-indigo-500 hover:text-white rounded-full mr-1 mb-1"
+                            key={idx}
+                          >
+                            #{keyw}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="text-xs lg:text-sm font-normal text-left mt-3 truncate">
+                        {sur.info.subtitle}
+                      </div>
+                      <div className="font-medium text-sm lg:text-lg text-left truncate">
+                        {sur.info.title}
+                      </div>
+                      <div className="flex flex-col lg:flex-row flex-nowrap gap-3 lg:justify-between mt-3">
+                        <div className="text-sm lg:text-lg text-left">
+                          {sur.info.city} {sur.info.town}
+                        </div>
+                        <div className="text-sm lg:text-lg text-left">
+                          {sur.info.salaryType}
+                          <span className="pl-2 font-medium text-indigo-500">
+                            {sur.info.salary}
+                          </span>{" "}
+                          원
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </>
+            ) : (
+              "잠시만 기다려주세요"
+            )}
+          </div>
+        </div>
+      </div>
+
+      {!full ? (
+        <button
+          className="ease-in-out duration-300 block mx-auto hover:cursor-pointer hover:scale-110 hover:font-medium hover:text-red-500 p-3 text-sm my-2"
+          onClick={e => {
+            getMoreList(counter);
+          }}
+        >
+          <span className="text-xs">▼ </span>더보기
+          <span className="text-xs"> ▼</span>
+        </button>
+      ) : null}
+    </>
+  );
+}
+
+export default PremiumList;

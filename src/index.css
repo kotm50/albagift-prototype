@@ -1,13 +1,285 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+
+label:hover {
+  cursor: pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.memolock {
+  height:calc(100vh - 100px);
+}
+
+
+img.mbti-img, img.photo {
+  max-width:100%;
+  height:auto;
+}
+
+
+div.captureIt {
+  margin-top:0!important;
+  overflow-x:hidden;
+}
+
+#error {
+  z-index:999999999;
+}
+
+#manualTitle {
+  font-family: 'Dela Gothic One', cursive;
+  font-size:1.1em;
+}
+
+#manualA {
+  font-family: 'Dela Gothic One', cursive;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+#adDetail .ql-container,
+#cover .ql-container {
+  height:300px!important;
+  background-color:white;
+}
+
+#adDetail .ql-editor,
+#cover .ql-editor {
+  height:300px!important;
+}
+
+#visitmemo .ql-editor,
+#visitmemo .ql-container {
+  height:300px!important;
+}
+
+
+.ql-container {
+  height:150px!important;
+  background-color:white;
+}
+
+.ql-editor {
+  height:150px!important;
+}
+
+.blurred-editor .ql-toolbar{
+  display: none;
+}
+
+#premiumCLogo{
+  max-width:100%;
+  max-height:100px;
+  width:250px;
+  height:auto;
+  overflow:hidden;
+}
+
+#premium_bg{
+  background-image:url('https://source.unsplash.com/random/1920x1080/?business');
+  background-size:cover;
+}
+
+#banner {
+  background-image:url('https://source.unsplash.com/random/1920x1080/?business');
+  background-size:cover;
+}
+
+.ql-size-huge {
+  font-size:1.875rem;
+  line-height:2.25rem;
+}
+.ql-size-large {
+  font-size:1.25rem;
+  line-height:1.75rem
+}
+.ql-size-normal {
+  font-size:1rem;
+  line-height:1.5rem;
+}
+
+.ql-size-small {
+  font-size:0.8rem;
+  line-height:1.2rem;
+}
+
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-align-left {
+  text-align:left;
+}
+
+.ql-align-right {
+  text-align:right;
+}
+
+.signature-canvas {
+  width: 100%;
+  min-height:200px;
+  border: 1px solid #e5e7eb;
+  background-color:#fafafa;
+}
+@page {
+  margin: 10mm;
+}
+
+.print-content > img {
+  vertical-align: text-top;
+  display:inline-block;
+  max-height:100%;
+  width:auto;
+  max-width:29%;
+  margin:0 1%;
+}
+
+.print-image {
+  text-align:center;
+}
+
+
+@media print {
+  .none-print {
+    display:none;
+  }
+  .print-content-container {
+    overflow: hidden;
+  }
+
+
+  .print-content-container .print-content {
+    -webkit-print-color-adjust:exact;
+    display: block; /* 프린트할 대상인 .print-content는 보이도록 설정 */
+    width: 170mm; /* A4 가로 크기 */
+    height: 250mm; /* A4 세로 크기 */
+    /* 추가적인 스타일 지정 */
+  }
+
+
+  .print-content > table {
+    width: 100%;
+    max-width:168mm;
+    max-height:250mm;
+  }
+
+  .print-content > img {
+    vertical-align: text-top;
+    display:inline-block;
+    max-height:100%;
+    width:auto;
+    max-width:50mm;
+    margin:0 1mm;
+  }
+  .print-image {
+    text-align:center;
+  }
+  .page-3 {
+    margin-top:30mm;
+  }
+}
+
+.noDrag {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
+
+
+.sidemenu {
+  position:fixed;
+  z-index:10;
+  width:50%;
+  background-color:#fff;
+  top:0;
+  height:100vh;
+  overflow-y:scroll;
+  transition:all .5s ease-in;
+}
+
+.sidemenu.off {
+  right:-50%;
+}
+
+.sidemenu.on {
+  right:0;
+}
+
+.memo > ul > li:before {
+  content:'- ';
+  display:inline;
+}
+
+.memo > ol {
+  margin-left:30px;
+}
+
+.memo > ol > li {
+  list-style:decimal-leading-zero;
+}
+
+.giftcategory {
+  word-break:keep-all;
+  white-space:nowrap;
+}
+
+@media (max-width:800px){
+  .giftCategoryMenu {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .giftCategoryMenu::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox에서 화살표를 숨기기 위해 필요합니다 */
+}
+
+
+#loginPopup {
+  max-width:640px;
+}
+
+#admin {
+  min-height:900px;
+  position:relative;
+}
+
+.buyResult {
+  min-height:700px;
+}
+
+#giftAdmin {
+  max-height:95vh;
+}
+
+.no-context {
+  -webkit-touch-callout:none;
+}
+
+#renewalmodal {
+  background-color:white;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:684px;
+  max-width:90%;
+  height:auto;
+  padding:8px;
 }
